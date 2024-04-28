@@ -4,7 +4,8 @@
     <!-- The first two viewport values are required for Chrome, see: https://crbug.com/591179. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, user-scalable=no">
-    <meta name="description" content="在线,JSON,JSON 校验,格式化,xml转json 工具,在线工具,json视图,可视化,程序,服务器,域名注册,正则表达式,测试,在线json格式化工具,json 格式化,json格式化工具,json字符串格式化,json 在线查看器,json在线,json 在线验证,json tools online,在线文字对比工具">
+    <meta name="description"
+          content="在线,JSON,JSON 校验,格式化,xml转json 工具,在线工具,json视图,可视化,程序,服务器,域名注册,正则表达式,测试,在线json格式化工具,json 格式化,json格式化工具,json字符串格式化,json 在线查看器,json在线,json 在线验证,json tools online,在线文字对比工具">
     <meta name="keywords"
           content="JSON,在线JSON,JSON 校验,格式化,在线工具,json视图,在线json格式化工具,json 格式化,json格式化工具,json字符串格式化,json 在线查看器,json在线,json 在线验证,json tools online,jsonparse">
     <meta name="theme-color" content="#2196f3">
@@ -49,9 +50,10 @@
             -webkit-flex-direction: column;
             flex-direction: column;
         }
-		input{
-			outline:none;
-		}
+
+        input {
+            outline: none;
+        }
 
         .header {
             background: #2196f3;
@@ -60,6 +62,9 @@
             font-size: 20px;
             font-weight: 400;
             padding: 0.65em;
+            width: 100%;
+            position: fixed;
+            z-index: 2;
 
             -webkit-flex: 0 0 auto;
             flex: 0 0 auto;
@@ -96,42 +101,92 @@
             display: -webkit-flex;
             display: flex;
             -webkit-flex-direction: column;
-			flex-direction: column;
-			padding: 0 5rem;
-			padding-bottom:2rem;
-			align-items: center;
+            flex-direction: column;
+            padding: 0 5rem;
+            padding-bottom: 2rem;
+            align-items: center;
+            position: relative;
+            padding-top: 50px;
         }
-		.main,.css-main{
-			display: flex;
-			margin: 2rem 0;
-			justify-content: center;
-    align-items: center;
-    padding: 0 10px;
-	gap: 10px;
-	padding-bottom: 40px;
-	width:60%;
-		}
-		.master{
-			flex:1 1 auto;
-		}
-		.master .tips{
-			display:flex;
-			justify-content:center;
-			padding:10px;
-			margin-bottom: 10px;
-		}
-		.rgb-main{
-			display:flex;
-			gap: 10px;
-		}
-		
-		.rgb-main input{
-			flex:1 0 auto;
-			text-align: center;
-		}
-		.bg-color{
-			color:#ffffff;
-		}
+        .main{
+            position: fixed;
+            z-index: 3;
+        }
+        .main, .css-main {
+            display: flex;
+            /*margin: 2rem 0;*/
+            justify-content: center;
+            align-items: center;
+            padding: 0 10px;
+            gap: 10px;
+            width: 60%;
+        }
+        .css-main{
+            padding-top: 75px;
+        }
+
+        .master {
+            flex: 1 1 auto;
+        }
+
+        .master .tips {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .rgb-main {
+            display: flex;
+            gap: 10px;
+        }
+
+        .rgb-main input {
+            flex: 1 0 auto;
+            text-align: center;
+        }
+
+        .bg-color {
+            color: #ffffff;
+        }
+        .color-main{
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .color-main li{
+            list-style: none;
+            width: 120px;
+            margin: 2px 5px;
+            /*color: #ffffff;*/
+            padding: 4px 0;
+            font-size: 14px;
+            cursor: pointer;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+            -webkit-transition-property: box-shadow, transform;
+            transition-property: box-shadow, transform;
+        }
+        .color-main li:hover{
+            box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+        .color-main li div{
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            justify-content: center;
+            align-items: center;
+        }
+        .color-black{
+            color: #000000 !important;
+        }
 
 
         /* On small screens, stack the areas without margin. */
@@ -141,24 +196,25 @@
                 flex-direction: column;
             }
 
-
             /* Workaround for crbug.com/586872 and Android 4.3 where the background is visible. */
             body {
                 background: #fff;
             }
-			.css-main{
-				width:100%;
-			}
+
+            .css-main {
+                width: 100%;
+            }
         }
+
         .copyright {
             display: flex;
             justify-content: center;
             padding-bottom: 12px;
             font-size: 16px;
             font-weight: 600;
-			position: fixed;
-			bottom: 10px;
-			width: 100%;
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
         }
 
         .copyright a {
@@ -169,14 +225,15 @@
             font-size: 16px;
             font-weight: 600;
         }
-		.error{
-			font-size: 12px;
-			color: #DC143c;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		
+
+        .error {
+            font-size: 12px;
+            color: #DC143c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
     </style>
 </head>
 <body>
@@ -191,990 +248,1390 @@
 </div>
 <div class="io">
     <div class="main" id="bg">
-		<div class="master">
-			<div class="tips" id="rgbTips">RGB颜色值</div>
-			<div class="rgb-main">
-				<input id="rgbR" name="r" value="" style="width:10px;" />
-				<input id="rgbG" name="g" value="" style="width:10px;" />
-				<input id="rgbB" name="b" value="" style="width:10px;" />
-			</div>
-		</div>
-		<div class="master">
-			<div class="tips" id="hexTips">十六进制颜色码</div>
-			<div class="rgb-main">
-				<input id="rgbHex" name="rgb-16" value="" />
-			</div>
-		</div>
-	</div>
-	<div class="css-main" style="flex-direction:column;">
-		<div class="tips">RGB颜色值</div>
-		<table bordercolor="#cccccc" cellspacing="0" cellpadding="0" width="100%" border="1" style="font-size:14px;border-collapse:collapse">
-    <tbody id="color">
-        <tr align="center">
-            <td><strong>颜色</strong></td>
-            <td><strong>英文代码</strong></td>
-            <td><strong>形象描述</strong></td>
-            <td><strong>十六进制</strong></td>
-            <td><strong>RGB</strong></td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffb6c1">　</td>
-            <td>LightPink</td>
-            <td>浅粉红</td>
-            <td>#FFB6C1</td>
-            <td>255,182,193</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffc0cb">　</td>
-            <td>Pink</td>
-            <td>粉红</td>
-            <td>#FFC0CB</td>
-            <td>255,192,203</td>
-        </tr>
-        <tr>
-            <td bgcolor="#dc143c">　</td>
-            <td>Crimson</td>
-            <td>猩红</td>
-            <td>#DC143C</td>
-            <td>220,20,60</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fff0f5">　</td>
-            <td>LavenderBlush</td>
-            <td>脸红的淡紫色</td>
-            <td>#FFF0F5</td>
-            <td>255,240,245</td>
-        </tr>
-        <tr>
-            <td bgcolor="#db7093">　</td>
-            <td>PaleVioletRed</td>
-            <td>苍白的紫罗兰红色</td>
-            <td>#DB7093</td>
-            <td>219,112,147</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ff69b4">　</td>
-            <td>HotPink</td>
-            <td>热情的粉红</td>
-            <td>#FF69B4</td>
-            <td>255,105,180</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ff1493">　</td>
-            <td>DeepPink</td>
-            <td>深粉色</td>
-            <td>#FF1493</td>
-            <td>255,20,147</td>
-        </tr>
-        <tr>
-            <td bgcolor="#c71585">　</td>
-            <td>MediumVioletRed</td>
-            <td>适中的紫罗兰红色</td>
-            <td>#C71585</td>
-            <td>199,21,133</td>
-        </tr>
-        <tr>
-            <td bgcolor="#da70d6">　</td>
-            <td>Orchid</td>
-            <td>兰花的紫色</td>
-            <td>#DA70D6</td>
-            <td>218,112,214</td>
-        </tr>
-        <tr>
-            <td bgcolor="#d8bfd8">　</td>
-            <td>Thistle</td>
-            <td>蓟</td>
-            <td>#D8BFD8</td>
-            <td>216,191,216</td>
-        </tr>
-        <tr>
-            <td bgcolor="#dda0dd">　</td>
-            <td>plum</td>
-            <td>李子</td>
-            <td>#DDA0DD</td>
-            <td>221,160,221</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ee82ee">　</td>
-            <td>Violet</td>
-            <td>紫罗兰</td>
-            <td>#EE82EE</td>
-            <td>238,130,238</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ff00ff">　</td>
-            <td>Magenta</td>
-            <td>洋红</td>
-            <td>#FF00FF</td>
-            <td>255,0,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ff00ff">　</td>
-            <td>Fuchsia</td>
-            <td>灯笼海棠(紫红色)</td>
-            <td>#FF00FF</td>
-            <td>255,0,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#8b008b">　</td>
-            <td>DarkMagenta</td>
-            <td>深洋红色</td>
-            <td>#8B008B</td>
-            <td>139,0,139</td>
-        </tr>
-        <tr>
-            <td bgcolor="#800080">　</td>
-            <td>Purple</td>
-            <td>紫色</td>
-            <td>#800080</td>
-            <td>128,0,128</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ba55d3">　</td>
-            <td>MediumOrchid</td>
-            <td>适中的兰花紫</td>
-            <td>#BA55D3</td>
-            <td>186,85,211</td>
-        </tr>
-        <tr>
-            <td bgcolor="#9400d3">　</td>
-            <td>DarkVoilet</td>
-            <td>深紫罗兰色</td>
-            <td>#9400D3</td>
-            <td>148,0,211</td>
-        </tr>
-        <tr>
-            <td bgcolor="#9932cc">　</td>
-            <td>DarkOrchid</td>
-            <td>深兰花紫</td>
-            <td>#9932CC</td>
-            <td>153,50,204</td>
-        </tr>
-        <tr>
-            <td bgcolor="#4b0082">　</td>
-            <td>Indigo</td>
-            <td>靛青</td>
-            <td>#4B0082</td>
-            <td>75,0,130</td>
-        </tr>
-        <tr>
-            <td bgcolor="#8a2be2">　</td>
-            <td>BlueViolet</td>
-            <td>深紫罗兰的蓝色</td>
-            <td>#8A2BE2</td>
-            <td>138,43,226</td>
-        </tr>
-        <tr>
-            <td bgcolor="#9370db">　</td>
-            <td>MediumPurple</td>
-            <td>适中的紫色</td>
-            <td>#9370DB</td>
-            <td>147,112,219</td>
-        </tr>
-        <tr>
-            <td bgcolor="#7b68ee">　</td>
-            <td>MediumSlateBlue</td>
-            <td>适中的板岩暗蓝灰色</td>
-            <td>#7B68EE</td>
-            <td>123,104,238</td>
-        </tr>
-        <tr>
-            <td bgcolor="#6a5acd">　</td>
-            <td>SlateBlue</td>
-            <td>板岩暗蓝灰色</td>
-            <td>#6A5ACD</td>
-            <td>106,90,205</td>
-        </tr>
-        <tr>
-            <td bgcolor="#483d8b">　</td>
-            <td>DarkSlateBlue</td>
-            <td>深岩暗蓝灰色</td>
-            <td>#483D8B</td>
-            <td>72,61,139</td>
-        </tr>
-        <tr>
-            <td bgcolor="#e6e6fa">　</td>
-            <td>Lavender</td>
-            <td>熏衣草花的淡紫色</td>
-            <td>#E6E6FA</td>
-            <td>230,230,250</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f8f8ff">　</td>
-            <td>GhostWhite</td>
-            <td>幽灵的白色</td>
-            <td>#F8F8FF</td>
-            <td>248,248,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#0000ff">　</td>
-            <td>Blue</td>
-            <td>纯蓝</td>
-            <td>#0000FF</td>
-            <td>0,0,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#0000cd">　</td>
-            <td>MediumBlue</td>
-            <td>适中的蓝色</td>
-            <td>#0000CD</td>
-            <td>0,0,205</td>
-        </tr>
-        <tr>
-            <td bgcolor="#191970">　</td>
-            <td>MidnightBlue</td>
-            <td>午夜的蓝色</td>
-            <td>#191970</td>
-            <td>25,25,112</td>
-        </tr>
-        <tr>
-            <td bgcolor="#00008b">　</td>
-            <td>DarkBlue</td>
-            <td>深蓝色</td>
-            <td>#00008B</td>
-            <td>0,0,139</td>
-        </tr>
-        <tr>
-            <td bgcolor="#000080">　</td>
-            <td>Navy</td>
-            <td>海军蓝</td>
-            <td>#000080</td>
-            <td>0,0,128</td>
-        </tr>
-        <tr>
-            <td bgcolor="#4169e1">　</td>
-            <td>RoyalBlue</td>
-            <td>皇家蓝</td>
-            <td>#4169E1</td>
-            <td>65,105,225</td>
-        </tr>
-        <tr>
-            <td bgcolor="#6495ed">　</td>
-            <td>CornflowerBlue</td>
-            <td>矢车菊的蓝色</td>
-            <td>#6495ED</td>
-            <td>100,149,237</td>
-        </tr>
-        <tr>
-            <td bgcolor="#b0c4de">　</td>
-            <td>LightSteelBlue</td>
-            <td>淡钢蓝</td>
-            <td>#B0C4DE</td>
-            <td>176,196,222</td>
-        </tr>
-        <tr>
-            <td bgcolor="#778899">　</td>
-            <td>LightSlateGray</td>
-            <td>浅石板灰</td>
-            <td>#778899</td>
-            <td>119,136,153</td>
-        </tr>
-        <tr>
-            <td bgcolor="#708090">　</td>
-            <td>SlateGray</td>
-            <td>石板灰</td>
-            <td>#708090</td>
-            <td>112,128,144</td>
-        </tr>
-        <tr>
-            <td bgcolor="#1e90ff">　</td>
-            <td>DoderBlue</td>
-            <td>道奇蓝</td>
-            <td>#1E90FF</td>
-            <td>30,144,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f0f8ff">　</td>
-            <td>AliceBlue</td>
-            <td>爱丽丝蓝</td>
-            <td>#F0F8FF</td>
-            <td>240,248,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#4682b4">　</td>
-            <td>SteelBlue</td>
-            <td>钢蓝</td>
-            <td>#4682B4</td>
-            <td>70,130,180</td>
-        </tr>
-        <tr>
-            <td bgcolor="#87cefa">　</td>
-            <td>LightSkyBlue</td>
-            <td>淡蓝色</td>
-            <td>#87CEFA</td>
-            <td>135,206,250</td>
-        </tr>
-        <tr>
-            <td bgcolor="#87ceeb">　</td>
-            <td>SkyBlue</td>
-            <td>天蓝色</td>
-            <td>#87CEEB</td>
-            <td>135,206,235</td>
-        </tr>
-        <tr>
-            <td bgcolor="#00bfff">　</td>
-            <td>DeepSkyBlue</td>
-            <td>深天蓝</td>
-            <td>#00BFFF</td>
-            <td>0,191,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#add8e6">　</td>
-            <td>LightBLue</td>
-            <td>淡蓝</td>
-            <td>#ADD8E6</td>
-            <td>173,216,230</td>
-        </tr>
-        <tr>
-            <td bgcolor="#b0e0e6">　</td>
-            <td>PowDerBlue</td>
-            <td>火药蓝</td>
-            <td>#B0E0E6</td>
-            <td>176,224,230</td>
-        </tr>
-        <tr>
-            <td bgcolor="#5f9ea0">　</td>
-            <td>CadetBlue</td>
-            <td>军校蓝</td>
-            <td>#5F9EA0</td>
-            <td>95,158,160</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f0ffff">　</td>
-            <td>Azure</td>
-            <td>蔚蓝色</td>
-            <td>#F0FFFF</td>
-            <td>240,255,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#e1ffff">　</td>
-            <td>LightCyan</td>
-            <td>淡青色</td>
-            <td>#E1FFFF</td>
-            <td>225,255,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#afeeee">　</td>
-            <td>PaleTurquoise</td>
-            <td>苍白的绿宝石</td>
-            <td>#AFEEEE</td>
-            <td>175,238,238</td>
-        </tr>
-        <tr>
-            <td bgcolor="#00ffff">　</td>
-            <td>Cyan</td>
-            <td>青色</td>
-            <td>#00FFFF</td>
-            <td>0,255,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#d4f2e7">　</td>
-            <td>Aqua</td>
-            <td>水绿色</td>
-            <td>#D4F2E7</td>
-            <td>212,242,231</td>
-        </tr>
-        <tr>
-            <td bgcolor="#00ced1">　</td>
-            <td>DarkTurquoise</td>
-            <td>深绿宝石</td>
-            <td>#00CED1</td>
-            <td>0,206,209</td>
-        </tr>
-        <tr>
-            <td bgcolor="#2f4f4f">　</td>
-            <td>DarkSlateGray</td>
-            <td>深石板灰</td>
-            <td>#2F4F4F</td>
-            <td>47,79,79</td>
-        </tr>
-        <tr>
-            <td bgcolor="#008b8b">　</td>
-            <td>DarkCyan</td>
-            <td>深青色</td>
-            <td>#008B8B</td>
-            <td>0,139,139</td>
-        </tr>
-        <tr>
-            <td bgcolor="#008080">　</td>
-            <td>Teal</td>
-            <td>水鸭色</td>
-            <td>#008080</td>
-            <td>0,128,128</td>
-        </tr>
-        <tr>
-            <td bgcolor="#48d1cc">　</td>
-            <td>MediumTurquoise</td>
-            <td>适中的绿宝石</td>
-            <td>#48D1CC</td>
-            <td>72,209,204</td>
-        </tr>
-        <tr>
-            <td bgcolor="#20b2aa">　</td>
-            <td>LightSeaGreen</td>
-            <td>浅海洋绿</td>
-            <td>#20B2AA</td>
-            <td>32,178,170</td>
-        </tr>
-        <tr>
-            <td bgcolor="#40e0d0">　</td>
-            <td>Turquoise</td>
-            <td>绿宝石</td>
-            <td>#40E0D0</td>
-            <td>64,224,208</td>
-        </tr>
-        <tr>
-            <td bgcolor="#7fffaa">　</td>
-            <td>Auqamarin</td>
-            <td>绿玉\碧绿色</td>
-            <td>#7FFFAA</td>
-            <td>127,255,170</td>
-        </tr>
-        <tr>
-            <td bgcolor="#00fa9a">　</td>
-            <td>MediumAquamarine</td>
-            <td>适中的碧绿色</td>
-            <td>#00FA9A</td>
-            <td>0,250,154</td>
-        </tr>
-        <tr>
-            <td bgcolor="#00ff7f">　</td>
-            <td>MediumSpringGreen</td>
-            <td>适中的春天的绿色</td>
-            <td>#00FF7F</td>
-            <td>0,255,127</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f5fffa">　</td>
-            <td>MintCream</td>
-            <td>薄荷奶油</td>
-            <td>#F5FFFA</td>
-            <td>245,255,250</td>
-        </tr>
-        <tr>
-            <td bgcolor="#3cb371">　</td>
-            <td>SpringGreen</td>
-            <td>春天的绿色</td>
-            <td>#3CB371</td>
-            <td>60,179,113</td>
-        </tr>
-        <tr>
-            <td bgcolor="#2e8b57">　</td>
-            <td>SeaGreen</td>
-            <td>海洋绿</td>
-            <td>#2E8B57</td>
-            <td>46,139,87</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f0fff0">　</td>
-            <td>Honeydew</td>
-            <td>蜂蜜</td>
-            <td>#F0FFF0</td>
-            <td>240,255,240</td>
-        </tr>
-        <tr>
-            <td bgcolor="#90ee90">　</td>
-            <td>LightGreen</td>
-            <td>淡绿色</td>
-            <td>#90EE90</td>
-            <td>144,238,144</td>
-        </tr>
-        <tr>
-            <td bgcolor="#98fb98">　</td>
-            <td>PaleGreen</td>
-            <td>苍白的绿色</td>
-            <td>#98FB98</td>
-            <td>152,251,152</td>
-        </tr>
-        <tr>
-            <td bgcolor="#8fbc8f">　</td>
-            <td>DarkSeaGreen</td>
-            <td>深海洋绿</td>
-            <td>#8FBC8F</td>
-            <td>143,188,143</td>
-        </tr>
-        <tr>
-            <td bgcolor="#32cd32">　</td>
-            <td>LimeGreen</td>
-            <td>酸橙绿</td>
-            <td>#32CD32</td>
-            <td>50,205,50</td>
-        </tr>
-        <tr>
-            <td bgcolor="#00ff00">　</td>
-            <td>Lime</td>
-            <td>酸橙色</td>
-            <td>#00FF00</td>
-            <td>0,255,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#228b22">　</td>
-            <td>ForestGreen</td>
-            <td>森林绿</td>
-            <td>#228B22</td>
-            <td>34,139,34</td>
-        </tr>
-        <tr>
-            <td bgcolor="#008000">　</td>
-            <td>Green</td>
-            <td>纯绿</td>
-            <td>#008000</td>
-            <td>0,128,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#006400">　</td>
-            <td>DarkGreen</td>
-            <td>深绿色</td>
-            <td>#006400</td>
-            <td>0,100,0</td>
-        </tr>
+        <div class="master">
+            <div class="tips" id="rgbTips">RGB颜色值</div>
+            <div class="rgb-main">
+                <input id="rgbR" name="r" value="" style="width:10px;"/>
+                <input id="rgbG" name="g" value="" style="width:10px;"/>
+                <input id="rgbB" name="b" value="" style="width:10px;"/>
+            </div>
+        </div>
+        <div class="master">
+            <div class="tips" id="hexTips">十六进制颜色码</div>
+            <div class="rgb-main">
+                <input id="rgbHex" name="rgb-16" value=""/>
+            </div>
+        </div>
+        <div class="master"><div>rgb色值：<span id="resRgb"></span></div> <div>十六进制码：<span id="resHex"></span></div></div>
+    </div>
+    <div class="css-main" style="flex-direction:column;">
 
-        <tr>
-            <td bgcolor="#7fff00">　</td>
-            <td>Chartreuse</td>
-            <td>查特酒绿</td>
-            <td>#7FFF00</td>
-            <td>127,255,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#7cfc00">　</td>
-            <td>LawnGreen</td>
-            <td>草坪绿</td>
-            <td>#7CFC00</td>
-            <td>124,252,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#adff2f">　</td>
-            <td>GreenYellow</td>
-            <td>绿黄色</td>
-            <td>#ADFF2F</td>
-            <td>173,255,47</td>
-        </tr>
-        <tr>
-            <td bgcolor="#556b2f">　</td>
-            <td>OliveDrab</td>
-            <td>橄榄土褐色</td>
-            <td>#556B2F</td>
-            <td>85,107,47</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f5f5dc">　</td>
-            <td>Beige</td>
-            <td>米色(浅褐色)</td>
-            <td>#F5F5DC</td>
-            <td>245,245,220</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fafad2">　</td>
-            <td>LightGoldenrodYellow</td>
-            <td>浅秋麒麟黄</td>
-            <td>#FAFAD2</td>
-            <td>250,250,210</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fffff0">　</td>
-            <td>Ivory</td>
-            <td>象牙</td>
-            <td>#FFFFF0</td>
-            <td>255,255,240</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffffe0">　</td>
-            <td>LightYellow</td>
-            <td>浅黄色</td>
-            <td>#FFFFE0</td>
-            <td>255,255,224</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffff00">　</td>
-            <td>Yellow</td>
-            <td>纯黄</td>
-            <td>#FFFF00</td>
-            <td>255,255,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#808000">　</td>
-            <td>Olive</td>
-            <td>橄榄</td>
-            <td>#808000</td>
-            <td>128,128,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#bdb76b">　</td>
-            <td>DarkKhaki</td>
-            <td>深卡其布</td>
-            <td>#BDB76B</td>
-            <td>189,183,107</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fffacd">　</td>
-            <td>LemonChiffon</td>
-            <td>柠檬薄纱</td>
-            <td>#FFFACD</td>
-            <td>255,250,205</td>
-        </tr>
-        <tr>
-            <td bgcolor="#eee8aa">　</td>
-            <td>PaleGodenrod</td>
-            <td>灰秋麒麟</td>
-            <td>#EEE8AA</td>
-            <td>238,232,170</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f0e68c">　</td>
-            <td>Khaki</td>
-            <td>卡其布</td>
-            <td>#F0E68C</td>
-            <td>240,230,140</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffd700">　</td>
-            <td>Gold</td>
-            <td>金</td>
-            <td>#FFD700</td>
-            <td>255,215,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fff8dc">　</td>
-            <td>Cornislk</td>
-            <td>玉米色</td>
-            <td>#FFF8DC</td>
-            <td>255,248,220</td>
-        </tr>
-        <tr>
-            <td bgcolor="#daa520">　</td>
-            <td>GoldEnrod</td>
-            <td>秋麒麟</td>
-            <td>#DAA520</td>
-            <td>218,165,32</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fffaf0">　</td>
-            <td>FloralWhite</td>
-            <td>花的白色</td>
-            <td>#FFFAF0</td>
-            <td>255,250,240</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fdf5e6">　</td>
-            <td>OldLace</td>
-            <td>老饰带</td>
-            <td>#FDF5E6</td>
-            <td>253,245,230</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f5deb3">　</td>
-            <td>Wheat</td>
-            <td>小麦色</td>
-            <td>#F5DEB3</td>
-            <td>245,222,179</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffe4b5">　</td>
-            <td>Moccasin</td>
-            <td>鹿皮鞋</td>
-            <td>#FFE4B5</td>
-            <td>255,228,181</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffa500">　</td>
-            <td>Orange</td>
-            <td>橙色</td>
-            <td>#FFA500</td>
-            <td>255,165,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffefd5">　</td>
-            <td>PapayaWhip</td>
-            <td>番木瓜</td>
-            <td>#FFEFD5</td>
-            <td>255,239,213</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffebcd">　</td>
-            <td>BlanchedAlmond</td>
-            <td>漂白的杏仁</td>
-            <td>#FFEBCD</td>
-            <td>255,235,205</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffdead">　</td>
-            <td>NavajoWhite</td>
-            <td>纳瓦霍白</td>
-            <td>#FFDEAD</td>
-            <td>255,222,173</td>
-        </tr>
-        <tr>
-            <td bgcolor="#faebd7">　</td>
-            <td>AntiqueWhite</td>
-            <td>古代的白色</td>
-            <td>#FAEBD7</td>
-            <td>250,235,215</td>
-        </tr>
-        <tr>
-            <td bgcolor="#d2b48c">　</td>
-            <td>Tan</td>
-            <td>晒黑</td>
-            <td>#D2B48C</td>
-            <td>210,180,140</td>
-        </tr>
-        <tr>
-            <td bgcolor="#deb887">　</td>
-            <td>BrulyWood</td>
-            <td>结实的树</td>
-            <td>#DEB887</td>
-            <td>222,184,135</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffe4c4">　</td>
-            <td>Bisque</td>
-            <td>(浓汤)乳脂,番茄等</td>
-            <td>#FFE4C4</td>
-            <td>255,228,196</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ff8c00">　</td>
-            <td>DarkOrange</td>
-            <td>深橙色</td>
-            <td>#FF8C00</td>
-            <td>255,140,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#faf0e6">　</td>
-            <td>Linen</td>
-            <td>亚麻布</td>
-            <td>#FAF0E6</td>
-            <td>250,240,230</td>
-        </tr>
-        <tr>
-            <td bgcolor="#cd853f">　</td>
-            <td>Peru</td>
-            <td>秘鲁</td>
-            <td>#CD853F</td>
-            <td>205,133,63</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffdab9">　</td>
-            <td>PeachPuff</td>
-            <td>桃色</td>
-            <td>#FFDAB9</td>
-            <td>255,218,185</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f4a460">　</td>
-            <td>SandyBrown</td>
-            <td>沙棕色</td>
-            <td>#F4A460</td>
-            <td>244,164,96</td>
-        </tr>
-        <tr>
-            <td bgcolor="#d2691e">　</td>
-            <td>Chocolate</td>
-            <td>巧克力</td>
-            <td>#D2691E</td>
-            <td>210,105,30</td>
-        </tr>
-        <tr>
-            <td bgcolor="#8b4513">　</td>
-            <td>SaddleBrown</td>
-            <td>马鞍棕色</td>
-            <td>#8B4513</td>
-            <td>139,69,19</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fff5ee">　</td>
-            <td>SeaShell</td>
-            <td>海贝壳</td>
-            <td>#FFF5EE</td>
-            <td>255,245,238</td>
-        </tr>
-        <tr>
-            <td bgcolor="#a0522d">　</td>
-            <td>Sienna</td>
-            <td>黄土赭色</td>
-            <td>#A0522D</td>
-            <td>160,82,45</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffa07a">　</td>
-            <td>LightSalmon</td>
-            <td>浅鲜肉(鲑鱼)色</td>
-            <td>#FFA07A</td>
-            <td>255,160,122</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ff7f50">　</td>
-            <td>Coral</td>
-            <td>珊瑚</td>
-            <td>#FF7F50</td>
-            <td>255,127,80</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ff4500">　</td>
-            <td>OrangeRed</td>
-            <td>橙红色</td>
-            <td>#FF4500</td>
-            <td>255,69,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#e9967a">　</td>
-            <td>DarkSalmon</td>
-            <td>深鲜肉(鲑鱼)色</td>
-            <td>#E9967A</td>
-            <td>233,150,122</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ff6347">　</td>
-            <td>Tomato</td>
-            <td>番茄</td>
-            <td>#FF6347</td>
-            <td>255,99,71</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffe4e1">　</td>
-            <td>MistyRose</td>
-            <td>薄雾玫瑰</td>
-            <td>#FFE4E1</td>
-            <td>255,228,225</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fa8072">　</td>
-            <td>Salmon</td>
-            <td>鲜肉(鲑鱼)色</td>
-            <td>#FA8072</td>
-            <td>250,128,114</td>
-        </tr>
-        <tr>
-            <td bgcolor="#fffafa">　</td>
-            <td>Snow</td>
-            <td>雪</td>
-            <td>#FFFAFA</td>
-            <td>255,250,250</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f08080">　</td>
-            <td>LightCoral</td>
-            <td>淡珊瑚色</td>
-            <td>#F08080</td>
-            <td>240,128,128</td>
-        </tr>
-        <tr>
-            <td bgcolor="#bc8f8f">　</td>
-            <td>RosyBrown</td>
-            <td>玫瑰棕色</td>
-            <td>#BC8F8F</td>
-            <td>188,143,143</td>
-        </tr>
-        <tr>
-            <td bgcolor="#cd5c5c">　</td>
-            <td>IndianRed</td>
-            <td>印度红</td>
-            <td>#CD5C5C</td>
-            <td>205,92,92</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ff0000">　</td>
-            <td>Red</td>
-            <td>纯红</td>
-            <td>#FF0000</td>
-            <td>255,0,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#a52a2a">　</td>
-            <td>Brown</td>
-            <td>棕色</td>
-            <td>#A52A2A</td>
-            <td>165,42,42</td>
-        </tr>
-        <tr>
-            <td bgcolor="#b22222">　</td>
-            <td>FireBrick</td>
-            <td>耐火砖</td>
-            <td>#B22222</td>
-            <td>178,34,34</td>
-        </tr>
-        <tr>
-            <td bgcolor="#8b0000">　</td>
-            <td>DarkRed</td>
-            <td>深红色</td>
-            <td>#8B0000</td>
-            <td>139,0,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#800000">　</td>
-            <td>Maroon</td>
-            <td>栗色</td>
-            <td>#800000</td>
-            <td>128,0,0</td>
-        </tr>
-        <tr>
-            <td bgcolor="#ffffff">　</td>
-            <td>White</td>
-            <td>纯白</td>
-            <td>#FFFFFF</td>
-            <td>255,255,255</td>
-        </tr>
-        <tr>
-            <td bgcolor="#f5f5f5">　</td>
-            <td>WhiteSmoke</td>
-            <td>白烟</td>
-            <td>#F5F5F5</td>
-            <td>245,245,245</td>
-        </tr>
-        <tr>
-            <td bgcolor="#dcdcdc">　</td>
-            <td>Gainsboro</td>
-            <td>亮灰色</td>
-            <td>#DCDCDC</td>
-            <td>220,220,220</td>
-        </tr>
-        <tr>
-            <td bgcolor="#d3d3d3">　</td>
-            <td>LightGrey</td>
-            <td>浅灰色</td>
-            <td>#D3D3D3</td>
-            <td>211,211,211</td>
-        </tr>
-        <tr>
-            <td bgcolor="#c0c0c0">　</td>
-            <td>Silver</td>
-            <td>银白色</td>
-            <td>#C0C0C0</td>
-            <td>192,192,192</td>
-        </tr>
-        <tr>
-            <td bgcolor="#a9a9a9">　</td>
-            <td>DarkGray</td>
-            <td>深灰色</td>
-            <td>#A9A9A9</td>
-            <td>169,169,169</td>
-        </tr>
-        <tr>
-            <td bgcolor="#808080">　</td>
-            <td>Gray</td>
-            <td>灰色</td>
-            <td>#808080</td>
-            <td>128,128,128</td>
-        </tr>
-        <tr>
-            <td bgcolor="#696969">　</td>
-            <td>DimGray</td>
-            <td>暗淡的灰色</td>
-            <td>#696969</td>
-            <td>105,105,105</td>
-        </tr>
-        <tr>
-            <td bgcolor="#000000">　</td>
-            <td>Black</td>
-            <td>纯黑</td>
-            <td>#000000</td>
-            <td>0,0,0</td>
-        </tr>
-    </tbody>
-</table>
-	</div>
+        <ul class="color-main" id="colorList">
+            <li style="background-color: #ffb6c1;">
+                <div>
+                    <span>LightPink</span>
+                    <span>浅粉红</span>
+                </div>
+                <div>
+                    <span>#FFB6C1</span>
+                    <span>255,182,193</span>
+                </div>
+            </li>
+            <li style="background-color: #ffc0cb;">
+                <div>
+                    <span>Pink</span>
+                    <span>粉红</span>
+                </div>
+                <div>
+                    <span>#FFC0CB</span>
+                    <span>255,192,203</span>
+                </div>
+            </li>
+            <li style="background-color: #dc143c;">
+                <div>
+                    <span>Crimson</span>
+                    <span>猩红</span>
+                </div>
+                <div>
+                    <span>#DC143C</span>
+                    <span>220,20,60</span>
+                </div>
+            </li>
+            <li style="background-color: #fff0f5;">
+                <div>
+                    <span>LavenderBlush</span>
+                    <span>脸红的淡紫色</span>
+                </div>
+                <div>
+                    <span>#FFF0F5</span>
+                    <span>255,240,245</span>
+                </div>
+            </li>
+            <li style="background-color: #db7093;">
+                <div>
+                    <span>PaleVioletRed</span>
+                    <span>苍白的紫罗兰红色</span>
+                </div>
+                <div>
+                    <span>#DB7093</span>
+                    <span>219,112,147</span>
+                </div>
+            </li>
+            <li style="background-color: #ff69b4;">
+                <div>
+                    <span>HotPink</span>
+                    <span>热情的粉红</span>
+                </div>
+                <div>
+                    <span>#FF69B4</span>
+                    <span>255,105,180</span>
+                </div>
+            </li>
+            <li style="background-color: #ff1493;">
+                <div>
+                    <span>DeepPink</span>
+                    <span>深粉色</span>
+                </div>
+                <div>
+                    <span>#FF1493</span>
+                    <span>255,20,147</span>
+                </div>
+            </li>
+            <li style="background-color: #c71585;">
+                <div>
+                    <span>MediumVioletRed</span>
+                    <span>适中的紫罗兰红色</span>
+                </div>
+                <div>
+                    <span>#C71585</span>
+                    <span>199,21,133</span>
+                </div>
+            </li>
+            <li style="background-color: #da70d6;">
+                <div>
+                    <span>Orchid</span>
+                    <span>兰花的紫色</span>
+                </div>
+                <div>
+                    <span>#DA70D6</span>
+                    <span>218,112,214</span>
+                </div>
+            </li>
+            <li style="background-color: #d8bfd8;">
+                <div>
+                    <span>Thistle</span>
+                    <span>蓟</span>
+                </div>
+                <div>
+                    <span>#D8BFD8</span>
+                    <span>216,191,216</span>
+                </div>
+            </li>
+            <li style="background-color: #dda0dd;">
+                <div>
+                    <span>plum</span>
+                    <span>李子</span>
+                </div>
+                <div>
+                    <span>#DDA0DD</span>
+                    <span>221,160,221</span>
+                </div>
+            </li>
+            <li style="background-color: #ee82ee;">
+                <div>
+                    <span>Violet</span>
+                    <span>紫罗兰</span>
+                </div>
+                <div>
+                    <span>#EE82EE</span>
+                    <span>238,130,238</span>
+                </div>
+            </li>
+            <li style="background-color: #ff00ff;">
+                <div>
+                    <span>Magenta</span>
+                    <span>洋红</span>
+                </div>
+                <div>
+                    <span>#FF00FF</span>
+                    <span>255,0,255</span>
+                </div>
+            </li>
+            <li style="background-color: #7D0043;">
+                <div>
+                    <span>Fuchsia</span>
+                    <span>灯笼海棠(紫红色)</span>
+                </div>
+                <div>
+                    <span>#7D0043</span>
+                    <span>125,0,57</span>
+                </div>
+            </li>
+            <li style="background-color: #8b008b;">
+                <div>
+                    <span>DarkMagenta</span>
+                    <span>深洋红色</span>
+                </div>
+                <div>
+                    <span>#8B008B</span>
+                    <span>139,0,139</span>
+                </div>
+            </li>
+            <li style="background-color: #800080;">
+                <div>
+                    <span>Purple</span>
+                    <span>紫色</span>
+                </div>
+                <div>
+                    <span>#800080</span>
+                    <span>128,0,128</span>
+                </div>
+            </li>
+            <li style="background-color: #ba55d3;">
+                <div>
+                    <span>MediumOrchid</span>
+                    <span>适中的兰花紫</span>
+                </div>
+                <div>
+                    <span>#BA55D3</span>
+                    <span>186,85,211</span>
+                </div>
+            </li>
+            <li style="background-color: #9400d3;">
+                <div>
+                    <span>DarkVoilet</span>
+                    <span>深紫罗兰色</span>
+                </div>
+                <div>
+                    <span>#9400D3</span>
+                    <span>148,0,211</span>
+                </div>
+            </li>
+            <li style="background-color: #9932cc;">
+                <div>
+                    <span>DarkOrchid</span>
+                    <span>深兰花紫</span>
+                </div>
+                <div>
+                    <span>#9932CC</span>
+                    <span>153,50,204</span>
+                </div>
+            </li>
+            <li style="background-color: #4b0082;">
+                <div>
+                    <span>Indigo</span>
+                    <span>靛青</span>
+                </div>
+                <div>
+                    <span>#4B0082</span>
+                    <span>75,0,130</span>
+                </div>
+            </li>
+            <li style="background-color: #8a2be2;">
+                <div>
+                    <span>BlueViolet</span>
+                    <span>深紫罗兰的蓝色</span>
+                </div>
+                <div>
+                    <span>#8A2BE2</span>
+                    <span>138,43,226</span>
+                </div>
+            </li>
+            <li style="background-color: #9370db;">
+                <div>
+                    <span>MediumPurple</span>
+                    <span>适中的紫色</span>
+                </div>
+                <div>
+                    <span>#9370DB</span>
+                    <span>147,112,219</span>
+                </div>
+            </li>
+            <li style="background-color: #7b68ee;">
+                <div>
+                    <span>MediumSlateBlue</span>
+                    <span>适中的板岩暗蓝灰色</span>
+                </div>
+                <div>
+                    <span>#7B68EE</span>
+                    <span>123,104,238</span>
+                </div>
+            </li>
+            <li style="background-color: #6a5acd;">
+                <div>
+                    <span>SlateBlue</span>
+                    <span>板岩暗蓝灰色</span>
+                </div>
+                <div>
+                    <span>#6A5ACD</span>
+                    <span>106,90,205</span>
+                </div>
+            </li>
+            <li style="background-color: #483d8b;">
+                <div>
+                    <span>DarkSlateBlue</span>
+                    <span>深岩暗蓝灰色</span>
+                </div>
+                <div>
+                    <span>#483D8B</span>
+                    <span>72,61,139</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #e6e6fa;">
+                <div>
+                    <span>Lavender</span>
+                    <span>熏衣草花的淡紫色</span>
+                </div>
+                <div>
+                    <span>#E6E6FA</span>
+                    <span>230,230,250</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #f8f8ff;">
+                <div>
+                    <span>GhostWhite</span>
+                    <span>幽灵的白色</span>
+                </div>
+                <div>
+                    <span>#F8F8FF</span>
+                    <span>248,248,255</span>
+                </div>
+            </li>
+            <li style="background-color: #0000ff;">
+                <div>
+                    <span>Blue</span>
+                    <span>纯蓝</span>
+                </div>
+                <div>
+                    <span>#0000FF</span>
+                    <span>0,0,255</span>
+                </div>
+            </li>
+            <li style="background-color: #0000cd;">
+                <div>
+                    <span>MediumBlue</span>
+                    <span>适中的蓝色</span>
+                </div>
+                <div>
+                    <span>#0000CD</span>
+                    <span>0,0,205</span>
+                </div>
+            </li>
+            <li style="background-color: #191970;">
+                <div>
+                    <span>MidnightBlue</span>
+                    <span>午夜的蓝色</span>
+                </div>
+                <div>
+                    <span>#191970</span>
+                    <span>25,25,112</span>
+                </div>
+            </li>
+            <li style="background-color: #00008b;">
+                <div>
+                    <span>DarkBlue</span>
+                    <span>深蓝色</span>
+                </div>
+                <div>
+                    <span>#00008B</span>
+                    <span>0,0,139</span>
+                </div>
+            </li>
+            <li style="background-color: #000080;">
+                <div>
+                    <span>Navy</span>
+                    <span>海军蓝</span>
+                </div>
+                <div>
+                    <span>#000080</span>
+                    <span>0,0,128</span>
+                </div>
+            </li>
+            <li style="background-color: #4169e1;">
+                <div>
+                    <span>RoyalBlue</span>
+                    <span>皇家蓝</span>
+                </div>
+                <div>
+                    <span>#4169E1</span>
+                    <span>65,105,225</span>
+                </div>
+            </li>
+            <li style="background-color: #6495ed;">
+                <div>
+                    <span>CornflowerBlue</span>
+                    <span>矢车菊的蓝色</span>
+                </div>
+                <div>
+                    <span>#6495ED</span>
+                    <span>100,149,237</span>
+                </div>
+            </li>
+            <li style="background-color: #b0c4de;">
+                <div>
+                    <span>LightSteelBlue</span>
+                    <span>淡钢蓝</span>
+                </div>
+                <div>
+                    <span>#B0C4DE</span>
+                    <span>176,196,222</span>
+                </div>
+            </li>
+            <li style="background-color: #778899;">
+                <div>
+                    <span>LightSlateGray</span>
+                    <span>浅石板灰</span>
+                </div>
+                <div>
+                    <span>#778899</span>
+                    <span>119,136,153</span>
+                </div>
+            </li>
+            <li style="background-color: #708090;">
+                <div>
+                    <span>SlateGray</span>
+                    <span>石板灰</span>
+                </div>
+                <div>
+                    <span>#708090</span>
+                    <span>112,128,144</span>
+                </div>
+            </li>
+            <li style="background-color: #1e90ff;">
+                <div>
+                    <span>DoderBlue</span>
+                    <span>道奇蓝</span>
+                </div>
+                <div>
+                    <span>#1E90FF</span>
+                    <span>30,144,255</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #f0f8ff;">
+                <div>
+                    <span>AliceBlue</span>
+                    <span>爱丽丝蓝</span>
+                </div>
+                <div>
+                    <span>#F0F8FF</span>
+                    <span>240,248,255</span>
+                </div>
+            </li>
+            <li style="background-color: #4682b4;">
+                <div>
+                    <span>SteelBlue</span>
+                    <span>钢蓝</span>
+                </div>
+                <div>
+                    <span>#4682B4</span>
+                    <span>70,130,180</span>
+                </div>
+            </li>
+            <li style="background-color: #87cefa;">
+                <div>
+                    <span>LightSkyBlue</span>
+                    <span>淡蓝色</span>
+                </div>
+                <div>
+                    <span>#87CEFA</span>
+                    <span>135,206,250</span>
+                </div>
+            </li>
+            <li style="background-color: #87ceeb;">
+                <div>
+                    <span>SkyBlue</span>
+                    <span>天蓝色</span>
+                </div>
+                <div>
+                    <span>#87CEEB</span>
+                    <span>135,206,235</span>
+                </div>
+            </li>
+            <li style="background-color: #00bfff;">
+                <div>
+                    <span>DeepSkyBlue</span>
+                    <span>深天蓝</span>
+                </div>
+                <div>
+                    <span>#00BFFF</span>
+                    <span>0,191,255</span>
+                </div>
+            </li>
+            <li style="background-color: #add8e6;">
+                <div>
+                    <span>LightBlue</span>
+                    <span>淡蓝</span>
+                </div>
+                <div>
+                    <span>#ADD8E6</span>
+                    <span>173,216,230</span>
+                </div>
+            </li>
+            <li style="background-color: #b0e0e6;">
+                <div>
+                    <span>PowderBlue</span>
+                    <span>火药蓝</span>
+                </div>
+                <div>
+                    <span>#B0E0E6</span>
+                    <span>176,224,230</span>
+                </div>
+            </li>
+            <li style="background-color: #5f9ea0;">
+                <div>
+                    <span>CadetBlue</span>
+                    <span>军校蓝</span>
+                </div>
+                <div>
+                    <span>#5F9EA0</span>
+                    <span>95,158,160</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #f0ffff;">
+                <div>
+                    <span>Azure</span>
+                    <span>蔚蓝色</span>
+                </div>
+                <div>
+                    <span>#F0FFFF</span>
+                    <span>240,255,255</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #e1ffff;">
+                <div>
+                    <span>LightCyan</span>
+                    <span>淡青色</span>
+                </div>
+                <div>
+                    <span>#E1FFFF</span>
+                    <span>225,255,255</span>
+                </div>
+            </li>
+            <li style="background-color: #afeeee;">
+                <div>
+                    <span>PaleTurquoise</span>
+                    <span>苍白的绿宝石</span>
+                </div>
+                <div>
+                    <span>#AFEEEE</span>
+                    <span>175,238,238</span>
+                </div>
+            </li>
+            <li style="background-color: #00ffff;">
+                <div>
+                    <span>Cyan</span>
+                    <span>青色</span>
+                </div>
+                <div>
+                    <span>#00FFFF</span>
+                    <span>0,255,255</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #d4f2e7;">
+                <div>
+                    <span>Aqua</span>
+                    <span>水绿色</span>
+                </div>
+                <div>
+                    <span>#D4F2E7</span>
+                    <span>212,242,231</span>
+                </div>
+            </li>
+            <li style="background-color: #00ced1;">
+                <div>
+                    <span>DarkTurquoise</span>
+                    <span>深绿宝石</span>
+                </div>
+                <div>
+                    <span>#00CED1</span>
+                    <span>0,206,209</span>
+                </div>
+            </li>
+            <li style="background-color: #2f4f4f;">
+                <div>
+                    <span>DarkSlateGray</span>
+                    <span>深石板灰</span>
+                </div>
+                <div>
+                    <span>#2F4F4F</span>
+                    <span>47,79,79</span>
+                </div>
+            </li>
+            <li style="background-color: #008b8b;">
+                <div>
+                    <span>DarkCyan</span>
+                    <span>深青色</span>
+                </div>
+                <div>
+                    <span>#008B8B</span>
+                    <span>0,139,139</span>
+                </div>
+            </li>
+            <li style="background-color: #008080;">
+                <div>
+                    <span>Teal</span>
+                    <span>水鸭色</span>
+                </div>
+                <div>
+                    <span>#008080</span>
+                    <span>0,128,128</span>
+                </div>
+            </li>
+            <li style="background-color: #48d1cc;">
+                <div>
+                    <span>MediumTurquoise</span>
+                    <span>适中的绿宝石</span>
+                </div>
+                <div>
+                    <span>#48D1CC</span>
+                    <span>72,209,204</span>
+                </div>
+            </li>
+            <li style="background-color: #20b2aa;">
+                <div>
+                    <span>LightSeaGreen</span>
+                    <span>浅海洋绿</span>
+                </div>
+                <div>
+                    <span>#20B2AA</span>
+                    <span>32,178,170</span>
+                </div>
+            </li>
+            <li style="background-color: #40e0d0;">
+                <div>
+                    <span>Turquoise</span>
+                    <span>绿宝石</span>
+                </div>
+                <div>
+                    <span>#40E0D0</span>
+                    <span>64,224,208</span>
+                </div>
+            </li>
+            <li style="background-color: #7fffaa;">
+                <div>
+                    <span>Aquamarine</span>
+                    <span>绿玉/碧绿色</span>
+                </div>
+                <div>
+                    <span>#7FFFAA</span>
+                    <span>127,255,170</span>
+                </div>
+            </li>
+            <li style="background-color: #00fa9a;">
+                <div>
+                    <span>MediumAquamarine</span>
+                    <span>适中的碧绿色</span>
+                </div>
+                <div>
+                    <span>#00FA9A</span>
+                    <span>0,250,154</span>
+                </div>
+            </li>
+            <li style="background-color: #00ff7f;">
+                <div>
+                    <span>MediumSpringGreen</span>
+                    <span>适中的春天的绿色</span>
+                </div>
+                <div>
+                    <span>#00FF7F</span>
+                    <span>0,255,127</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #f5fffa;">
+                <div>
+                    <span>MintCream</span>
+                    <span>薄荷奶油</span>
+                </div>
+                <div>
+                    <span>#F5FFFA</span>
+                    <span>245,255,250</span>
+                </div>
+            </li>
+            <li style="background-color: #3cb371;">
+                <div>
+                    <span>SpringGreen</span>
+                    <span>春天的绿色</span>
+                </div>
+                <div>
+                    <span>#3CB371</span>
+                    <span>60,179,113</span>
+                </div>
+            </li>
+            <li style="background-color: #2e8b57;">
+                <div>
+                    <span>SeaGreen</span>
+                    <span>海洋绿</span>
+                </div>
+                <div>
+                    <span>#2E8B57</span>
+                    <span>46,139,87</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #f0fff0;">
+                <div>
+                    <span>Honeydew</span>
+                    <span>蜂蜜</span>
+                </div>
+                <div>
+                    <span>#F0FFF0</span>
+                    <span>240,255,240</span>
+                </div>
+            </li>
+            <li style="background-color: #90ee90;">
+                <div>
+                    <span>LightGreen</span>
+                    <span>淡绿色</span>
+                </div>
+                <div>
+                    <span>#90EE90</span>
+                    <span>144,238,144</span>
+                </div>
+            </li>
+            <li style="background-color: #98fb98;">
+                <div>
+                    <span>PaleGreen</span>
+                    <span>苍白的绿色</span>
+                </div>
+                <div>
+                    <span>#98FB98</span>
+                    <span>152,251,152</span>
+                </div>
+            </li>
+            <li style="background-color: #8fbc8f;">
+                <div>
+                    <span>DarkSeaGreen</span>
+                    <span>深海洋绿</span>
+                </div>
+                <div>
+                    <span>#8FBC8F</span>
+                    <span>143,188,143</span>
+                </div>
+            </li>
+            <li style="background-color: #32cd32;">
+                <div>
+                    <span>LimeGreen</span>
+                    <span>酸橙绿</span>
+                </div>
+                <div>
+                    <span>#32CD32</span>
+                    <span>50,205,50</span>
+                </div>
+            </li>
+            <li style="background-color: #00ff00;">
+                <div>
+                    <span>Lime</span>
+                    <span>酸橙色</span>
+                </div>
+                <div>
+                    <span>#00FF00</span>
+                    <span>0,255,0</span>
+                </div>
+            </li>
+            <li style="background-color: #228b22;">
+                <div>
+                    <span>ForestGreen</span>
+                    <span>森林绿</span>
+                </div>
+                <div>
+                    <span>#228B22</span>
+                    <span>34,139,34</span>
+                </div>
+            </li>
+            <li style="background-color: #008000;">
+                <div>
+                    <span>Green</span>
+                    <span>纯绿</span>
+                </div>
+                <div>
+                    <span>#008000</span>
+                    <span>0,128,0</span>
+                </div>
+            </li>
+            <li style="background-color: #006400;">
+                <div>
+                    <span>DarkGreen</span>
+                    <span>深绿色</span>
+                </div>
+                <div>
+                    <span>#006400</span>
+                    <span>0,100,0</span>
+                </div>
+            </li>
+            <li style="background-color: #7fff00;">
+                <div>
+                    <span>Chartreuse</span>
+                    <span>查特酒绿</span>
+                </div>
+                <div>
+                    <span>#7FFF00</span>
+                    <span>127,255,0</span>
+                </div>
+            </li>
+            <li style="background-color: #7cfc00;">
+                <div>
+                    <span>LawnGreen</span>
+                    <span>草坪绿</span>
+                </div>
+                <div>
+                    <span>#7CFC00</span>
+                    <span>124,252,0</span>
+                </div>
+            </li>
+            <li style="background-color: #adff2f;">
+                <div>
+                    <span>GreenYellow</span>
+                    <span>绿黄色</span>
+                </div>
+                <div>
+                    <span>#ADFF2F</span>
+                    <span>173,255,47</span>
+                </div>
+            </li>
+            <li style="background-color: #556b2f;">
+                <div>
+                    <span>OliveDrab</span>
+                    <span>橄榄土褐色</span>
+                </div>
+                <div>
+                    <span>#556B2F</span>
+                    <span>85,107,47</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #f5f5dc;">
+                <div>
+                    <span>Beige</span>
+                    <span>米色(浅褐色)</span>
+                </div>
+                <div>
+                    <span>#F5F5DC</span>
+                    <span>245,245,220</span>
+                </div>
+            </li>
+            <li style="background-color: #fafad2;">
+                <div>
+                    <span>LightGoldenrodYellow</span>
+                    <span>浅秋麒麟黄</span>
+                </div>
+                <div>
+                    <span>#FAFAD2</span>
+                    <span>250,250,210</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #fffff0;">
+                <div>
+                    <span>Ivory</span>
+                    <span>象牙</span>
+                </div>
+                <div>
+                    <span>#FFFFF0</span>
+                    <span>255,255,240</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #ffffe0;">
+                <div>
+                    <span>LightYellow</span>
+                    <span>浅黄色</span>
+                </div>
+                <div>
+                    <span>#FFFFE0</span>
+                    <span>255,255,224</span>
+                </div>
+            </li>
+            <li style="background-color: #ffff00;">
+                <div>
+                    <span>Yellow</span>
+                    <span>纯黄</span>
+                </div>
+                <div>
+                    <span>#FFFF00</span>
+                    <span>255,255,0</span>
+                </div>
+            </li>
+            <li style="background-color: #808000;">
+                <div>
+                    <span>Olive</span>
+                    <span>橄榄</span>
+                </div>
+                <div>
+                    <span>#808000</span>
+                    <span>128,128,0</span>
+                </div>
+            </li>
+            <li style="background-color: #bdb76b;">
+                <div>
+                    <span>DarkKhaki</span>
+                    <span>深卡其布</span>
+                </div>
+                <div>
+                    <span>#BDB76B</span>
+                    <span>189,183,107</span>
+                </div>
+            </li>
+            <li style="background-color: #fffacd;">
+                <div>
+                    <span>LemonChiffon</span>
+                    <span>柠檬薄纱</span>
+                </div>
+                <div>
+                    <span>#FFFACD</span>
+                    <span>255,250,205</span>
+                </div>
+            </li>
+            <li style="background-color: #eee8aa;">
+                <div>
+                    <span>PaleGodenrod</span>
+                    <span>灰秋麒麟</span>
+                </div>
+                <div>
+                    <span>#EEE8AA</span>
+                    <span>238,232,170</span>
+                </div>
+            </li>
+            <li style="background-color: #f0e68c;">
+                <div>
+                    <span>Khaki</span>
+                    <span>卡其布</span>
+                </div>
+                <div>
+                    <span>#F0E68C</span>
+                    <span>240,230,140</span>
+                </div>
+            </li>
+            <li style="background-color: #ffd700;">
+                <div>
+                    <span>Gold</span>
+                    <span>金</span>
+                </div>
+                <div>
+                    <span>#FFD700</span>
+                    <span>255,215,0</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #fff8dc;">
+                <div>
+                    <span>Cornsilk</span> <!-- 注意：修正了拼写错误"Cornislk" -->
+                    <span>玉米色</span>
+                </div>
+                <div>
+                    <span>#FFF8DC</span>
+                    <span>255,248,220</span>
+                </div>
+            </li>
+            <li style="background-color: #daa520;">
+                <div>
+                    <span>Goldenrod</span> <!-- 注意：修正了拼写错误"GoldEnrod" -->
+                    <span>秋麒麟</span>
+                </div>
+                <div>
+                    <span>#DAA520</span>
+                    <span>218,165,32</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #fffaf0;">
+                <div>
+                    <span>FloralWhite</span>
+                    <span>花的白色</span>
+                </div>
+                <div>
+                    <span>#FFFAF0</span>
+                    <span>255,250,240</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #fdf5e6;">
+                <div>
+                    <span>OldLace</span>
+                    <span>老饰带</span>
+                </div>
+                <div>
+                    <span>#FDF5E6</span>
+                    <span>253,245,230</span>
+                </div>
+            </li>
+            <li style="background-color: #f5deb3;">
+                <div>
+                    <span>Wheat</span>
+                    <span>小麦色</span>
+                </div>
+                <div>
+                    <span>#F5DEB3</span>
+                    <span>245,222,179</span>
+                </div>
+            </li>
+            <li style="background-color: #ffe4b5;">
+                <div>
+                    <span>Moccasin</span>
+                    <span>鹿皮鞋</span>
+                </div>
+                <div>
+                    <span>#FFE4B5</span>
+                    <span>255,228,181</span>
+                </div>
+            </li>
+            <li style="background-color: #ffa500;">
+                <div>
+                    <span>Orange</span>
+                    <span>橙色</span>
+                </div>
+                <div>
+                    <span>#FFA500</span>
+                    <span>255,165,0</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #ffefd5;">
+                <div>
+                    <span>PapayaWhip</span>
+                    <span>番木瓜</span>
+                </div>
+                <div>
+                    <span>#FFEFD5</span>
+                    <span>255,239,213</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #ffebcd;">
+                <div>
+                    <span>BlanchedAlmond</span>
+                    <span>漂白的杏仁</span>
+                </div>
+                <div>
+                    <span>#FFEBCD</span>
+                    <span>255,235,205</span>
+                </div>
+            </li>
+            <li style="background-color: #ffdead;">
+                <div>
+                    <span>NavajoWhite</span>
+                    <span>纳瓦霍白</span>
+                </div>
+                <div>
+                    <span>#FFDEAD</span>
+                    <span>255,222,173</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #faebd7;">
+                <div>
+                    <span>AntiqueWhite</span>
+                    <span>古代的白色</span>
+                </div>
+                <div>
+                    <span>#FAEBD7</span>
+                    <span>250,235,215</span>
+                </div>
+            </li>
+            <li style="background-color: #d2b48c;">
+                <div>
+                    <span>Tan</span>
+                    <span>晒黑</span>
+                </div>
+                <div>
+                    <span>#D2B48C</span>
+                    <span>210,180,140</span>
+                </div>
+            </li>
+            <li style="background-color: #deb887;">
+                <div>
+                    <span>BrulyWood</span> <!-- 注意：修正拼写错误为"BurlyWood" -->
+                    <span>结实的树</span>
+                </div>
+                <div>
+                    <span>#DEB887</span>
+                    <span>222,184,135</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #ffe4c4;">
+                <div>
+                    <span>Bisque</span>
+                    <span>(浓汤)乳脂,番茄等</span>
+                </div>
+                <div>
+                    <span>#FFE4C4</span>
+                    <span>255,228,196</span>
+                </div>
+            </li>
+            <li style="background-color: #ff8c00;">
+                <div>
+                    <span>DarkOrange</span>
+                    <span>深橙色</span>
+                </div>
+                <div>
+                    <span>#FF8C00</span>
+                    <span>255,140,0</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #faf0e6;">
+                <div>
+                    <span>Linen</span>
+                    <span>亚麻布</span>
+                </div>
+                <div>
+                    <span>#FAF0E6</span>
+                    <span>250,240,230</span>
+                </div>
+            </li>
+            <li style="background-color: #cd853f;">
+                <div>
+                    <span>Peru</span>
+                    <span>秘鲁</span>
+                </div>
+                <div>
+                    <span>#CD853F</span>
+                    <span>205,133,63</span>
+                </div>
+            </li>
+            <li style="background-color: #ffdab9;">
+                <div>
+                    <span>PeachPuff</span>
+                    <span>桃色</span>
+                </div>
+                <div>
+                    <span>#FFDAB9</span>
+                    <span>255,218,185</span>
+                </div>
+            </li>
+            <li style="background-color: #f4a460;">
+                <div>
+                    <span>SandyBrown</span>
+                    <span>沙棕色</span>
+                </div>
+                <div>
+                    <span>#F4A460</span>
+                    <span>244,164,96</span>
+                </div>
+            </li>
+            <li style="background-color: #d2691e;">
+                <div>
+                    <span>Chocolate</span>
+                    <span>巧克力</span>
+                </div>
+                <div>
+                    <span>#D2691E</span>
+                    <span>210,105,30</span>
+                </div>
+            </li>
+            <li style="background-color: #8b4513;">
+                <div>
+                    <span>SaddleBrown</span>
+                    <span>马鞍棕色</span>
+                </div>
+                <div>
+                    <span>#8B4513</span>
+                    <span>139,69,19</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #fff5ee;">
+                <div>
+                    <span>SeaShell</span>
+                    <span>海贝壳</span>
+                </div>
+                <div>
+                    <span>#FFF5EE</span>
+                    <span>255,245,238</span>
+                </div>
+            </li>
+            <li style="background-color: #a0522d;">
+                <div>
+                    <span>Sienna</span>
+                    <span>黄土赭色</span>
+                </div>
+                <div>
+                    <span>#A0522D</span>
+                    <span>160,82,45</span>
+                </div>
+            </li>
+            <li style="background-color: #ffa07a;">
+                <div>
+                    <span>LightSalmon</span>
+                    <span>浅鲜肉(鲑鱼)色</span>
+                </div>
+                <div>
+                    <span>#FFA07A</span>
+                    <span>255,160,122</span>
+                </div>
+            </li>
+            <li style="background-color: #ff7f50;">
+                <div>
+                    <span>Coral</span>
+                    <span>珊瑚</span>
+                </div>
+                <div>
+                    <span>#FF7F50</span>
+                    <span>255,127,80</span>
+                </div>
+            </li>
+            <li style="background-color: #ff4500;">
+                <div>
+                    <span>OrangeRed</span>
+                    <span>橙红色</span>
+                </div>
+                <div>
+                    <span>#FF4500</span>
+                    <span>255,69,0</span>
+                </div>
+            </li>
+            <li style="background-color: #e9967a;">
+                <div>
+                    <span>DarkSalmon</span>
+                    <span>深鲜肉(鲑鱼)色</span>
+                </div>
+                <div>
+                    <span>#E9967A</span>
+                    <span>233,150,122</span>
+                </div>
+            </li>
+            <li style="background-color: #ff6347;">
+                <div>
+                    <span>Tomato</span>
+                    <span>番茄</span>
+                </div>
+                <div>
+                    <span>#FF6347</span>
+                    <span>255,99,71</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #ffe4e1;">
+                <div>
+                    <span>MistyRose</span>
+                    <span>薄雾玫瑰</span>
+                </div>
+                <div>
+                    <span>#FFE4E1</span>
+                    <span>255,228,225</span>
+                </div>
+            </li>
+            <li style="background-color: #fa8072;">
+                <div>
+                    <span>Salmon</span>
+                    <span>鲜肉(鲑鱼)色</span>
+                </div>
+                <div>
+                    <span>#FA8072</span>
+                    <span>250,128,114</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #fffafa;">
+                <div>
+                    <span>Snow</span>
+                    <span>雪</span>
+                </div>
+                <div>
+                    <span>#FFFAFA</span>
+                    <span>255,250,250</span>
+                </div>
+            </li>
+            <li style="background-color: #f08080;">
+                <div>
+                    <span>LightCoral</span>
+                    <span>淡珊瑚色</span>
+                </div>
+                <div>
+                    <span>#F08080</span>
+                    <span>240,128,128</span>
+                </div>
+            </li>
+            <li style="background-color: #bc8f8f;">
+                <div>
+                    <span>RosyBrown</span>
+                    <span>玫瑰棕色</span>
+                </div>
+                <div>
+                    <span>#BC8F8F</span>
+                    <span>188,143,143</span>
+                </div>
+            </li>
+            <li style="background-color: #cd5c5c;">
+                <div>
+                    <span>IndianRed</span>
+                    <span>印度红</span>
+                </div>
+                <div>
+                    <span>#CD5C5C</span>
+                    <span>205,92,92</span>
+                </div>
+            </li>
+            <li style="background-color: #ff0000;">
+                <div>
+                    <span>Red</span>
+                    <span>纯红</span>
+                </div>
+                <div>
+                    <span>#FF0000</span>
+                    <span>255,0,0</span>
+                </div>
+            </li>
+            <li style="background-color: #a52a2a;">
+                <div>
+                    <span>Brown</span>
+                    <span>棕色</span>
+                </div>
+                <div>
+                    <span>#A52A2A</span>
+                    <span>165,42,42</span>
+                </div>
+            </li>
+            <li style="background-color: #b22222;">
+                <div>
+                    <span>FireBrick</span>
+                    <span>耐火砖</span>
+                </div>
+                <div>
+                    <span>#B22222</span>
+                    <span>178,34,34</span>
+                </div>
+            </li>
+            <li style="background-color: #8b0000;">
+                <div>
+                    <span>DarkRed</span>
+                    <span>深红色</span>
+                </div>
+                <div>
+                    <span>#8B0000</span>
+                    <span>139,0,0</span>
+                </div>
+            </li>
+            <li style="background-color: #800000;">
+                <div>
+                    <span>Maroon</span>
+                    <span>栗色</span>
+                </div>
+                <div>
+                    <span>#800000</span>
+                    <span>128,0,0</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #ffffff;">
+                <div>
+                    <span>White</span>
+                    <span>纯白</span>
+                </div>
+                <div>
+                    <span>#FFFFFF</span>
+                    <span>255,255,255</span>
+                </div>
+            </li>
+            <li class="color-black" style="background-color: #f5f5f5;">
+                <div>
+                    <span>WhiteSmoke</span>
+                    <span>白烟</span>
+                </div>
+                <div>
+                    <span>#F5F5F5</span>
+                    <span>245,245,245</span>
+                </div>
+            </li>
+            <li style="background-color: #dcdcdc;">
+                <div>
+                    <span>Gainsboro</span>
+                    <span>亮灰色</span>
+                </div>
+                <div>
+                    <span>#DCDCDC</span>
+                    <span>220,220,220</span>
+                </div>
+            </li>
+            <li style="background-color: #d3d3d3;">
+                <div>
+                    <span>LightGrey</span>
+                    <span>浅灰色</span>
+                </div>
+                <div>
+                    <span>#D3D3D3</span>
+                    <span>211,211,211</span>
+                </div>
+            </li>
+            <li style="background-color: #c0c0c0;">
+                <div>
+                    <span>Silver</span>
+                    <span>银白色</span>
+                </div>
+                <div>
+                    <span>#C0C0C0</span>
+                    <span>192,192,192</span>
+                </div>
+            </li>
+            <li style="background-color: #a9a9a9;">
+                <div>
+                    <span>DarkGray</span>
+                    <span>深灰色</span>
+                </div>
+                <div>
+                    <span>#A9A9A9</span>
+                    <span>169,169,169</span>
+                </div>
+            </li>
+            <li style="background-color: #808080;">
+                <div>
+                    <span>Gray</span>
+                    <span>灰色</span>
+                </div>
+                <div>
+                    <span>#808080</span>
+                    <span>128,128,128</span>
+                </div>
+            </li>
+            <li style="background-color: #696969;">
+                <div>
+                    <span>DimGray</span>
+                    <span>暗淡的灰色</span>
+                </div>
+                <div>
+                    <span>#696969</span>
+                    <span>105,105,105</span>
+                </div>
+            </li>
+            <li style="background-color: #000000;">
+                <div>
+                    <span>Black</span>
+                    <span>纯黑</span>
+                </div>
+                <div>
+                    <span>#000000</span>
+                    <span>0,0,0</span>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="copyright"><a href="https://www.dailythink.online/">DailyThink-Online</a>.</div>
 </body>
+<script src="jquery.min.js" inline></script>
 <script src="index.js" inline></script>
 </html>
